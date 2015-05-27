@@ -17,8 +17,14 @@
     };
   });
 
-  var gems = [
-    {
+  app.controller('GalleryController', function(){
+    this.current = 0;
+    this.setCurrent = function(newGallery){
+      this.current = newGallery || 0;
+    };
+  });
+
+  var gems = [{
       name: 'Azurite',
       description: "Some gems have hidden qualities beyond their luster, beyond their shine... Azurite is one of those gems.",
       shine: 8,
@@ -42,8 +48,7 @@
         author: "tim@example.org",
         createdOn: 1397490980837
       }]
-    },
-    {
+    }, {
       name: 'Bloodstone',
       description: "Origin of the Bloodstone is unknown, hence its low value. It has a very high shine and 12 sides, however.",
       shine: 9,
@@ -67,8 +72,7 @@
         author: "gemsRock@example.org",
         createdOn: 1397490980837
       }]
-    },
-    {
+    }, {
       name: 'Zircon',
       description: "Zircon is our most coveted and sought after gem. You will pay much to be the proud owner of this gorgeous and high shine gem.",
       shine: 70,
@@ -79,7 +83,7 @@
       images: [
         "images/gem-06.gif",
         "images/gem-07.gif",
-        "images/gem-09.gif"
+        "images/gem-08.gif"
       ],
       reviews: [{
         stars: 1,
@@ -97,6 +101,5 @@
         author: "nat@example.org",
         createdOn: 1397490980837
       }]
-    }
-  ];
+    }];
 })();

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="gemStore">
+  <head>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </head>
+  <body class="list-group" ng-controller="StoreController as store">
+    <header>
+      <h1 class="text-center">Flatlander Crafted Gems</h1>
+      <h2 class="text-center">– an Angular store –</h2>
+    </header>
+    <div class="list-group-item" ng-repeat="product in store.products">
+      <h3>
+        {{product.name}}
+        <em class="pull-right">{{product.price | currency}}</em>
+      </h3>
+      <section ng-show="product.images.length">
+        <img ng-src="{{product.images[0]}}" />
+        <ul class="list-inline thumbs">
+          <li class="thumbnail" ng-repeat="image in product.images">
+            <img ng-src="{{image}}" />
+          </li>
+        </ul>
+      </section>
+
+      <section class="tab" ng-controller="TabController as tabber">
+        <ul class="nav nav-pills">
+          <li ng-class="{active:tabber.isSet(1)}">
+            <a ng-click="tabber.setTab(1)" href>Description</a></li>
+          <li ng-class="{active:tabber.isSet(2)}">
+            <a ng-click="tabber.setTab(2)" href>Specs</a></li>
+          <li ng-class="{active:tabber.isSet(3)}">
+            <a ng-click="tabber.setTab(3)" href>Reviews</a></li> 
+        </ul>
+        <div ng-show="tabber.isSet(1)">
+          <h4>Description</h4>
+          <blockquote>{{product.description}}</blockquote>
+        </div>
+        <div ng-show="tabber.isSet(2)">
+          <h4>Specs</h4>
+          <blockquote>Shine: {{product.shine}}</blockquote>
+        </div>
+        <div ng-show="tabber.isSet(3)">
+          <h4>Reviews</h4>
+          <blockquote></blockquote>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
